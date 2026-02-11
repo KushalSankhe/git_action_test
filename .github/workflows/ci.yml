@@ -25,7 +25,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest
+
      
       - name: Run tests
-        run: pytest test_main.py
+        run: |
+          pip install pytest-cov
+          pytest --cov=. --cov-report=term --cov-report=html --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+
