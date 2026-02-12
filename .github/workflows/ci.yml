@@ -53,4 +53,4 @@ jobs:
           path: coverage
       
       - name: Show the output
-        run: head -n 20 coverage/coverage.xml
+        run: cat coverage/coverage.xml
