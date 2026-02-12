@@ -53,4 +53,4 @@ jobs:
           path: coverage.xml
       
       - name: Show the output
-        run: cat coverage.xml
+        run: ls -la coverage.xml
