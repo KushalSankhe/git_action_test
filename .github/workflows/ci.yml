@@ -50,7 +50,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-reports
-          path: coverage.xml
+          path: coverage
       
       - name: Show the output
-        run: ls -la coverage.xml
+        run: head -n 20 coverage/coverage.xml
