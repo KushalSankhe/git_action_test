@@ -54,3 +54,18 @@ jobs:
       
       - name: Show the output
         run: cat coverage/coverage.xml
+
+      - name: Calculating the coverage percentage
+        run: |
+          if [ ! -f coverage/coverage.xml ]; then
+            echo "Error: coverage.xml not found"
+            exit 1
+          fi
+          RATE=$(grep -oPm1 '(?<=line-rate=")[0-9.]+' coverage/coverage.xml)
+          if [ -z "$RATE" ]; then
+            echo "Error: Could not parse line-rate from coverage.xml"
+            exit 1
+          fi
+          PERCENTAGE=$(awk "BEGIN{printf \"%.0f\", $RATE * 100}")
+          echo "Coverage: $PERCENTAGE%"
+          echo value=$PERCENTAGE% >> $GITHUB_OUTPUT
