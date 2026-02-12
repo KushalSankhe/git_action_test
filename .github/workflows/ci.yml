@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  Test_Python_Code:
     runs-on: ubuntu-latest
 
     steps:
