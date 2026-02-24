@@ -102,7 +102,7 @@ jobs:
             -Dsonar.projectKey=my-python-project \
             -Dsonar.sources=. \
             -Dsonar.tests=. \
-            -Dsonar.python.coverage.reportPaths=coverage/coverage.xml
+            -Dsonar.python.coverage.reportPaths=coverage/coverage.xml \
             -Dsonar.python.version=3.12 \
             -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.host.url=$SONAR_HOST_URL
