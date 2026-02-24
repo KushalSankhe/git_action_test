@@ -92,6 +92,11 @@ jobs:
             https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
           unzip -q sonar-scanner.zip
           mv sonar-scanner-* sonar-scanner
+
+      - name: Debug the sonar-scanner variable
+        run: |
+          echo "SONAR_HOST_URL=$SONAR_HOST_URL"
+          echo "SONAR_TOKEN=$SONAR_TOKEN"
       
       - name: Run SonarQube analysis
         env:
@@ -105,6 +110,6 @@ jobs:
             -Dsonar.python.coverage.reportPaths=coverage/coverage.xml \
             -Dsonar.python.version=3.12 \
             -Dsonar.login=$SONAR_TOKEN \
-            -Dsonar.host.url=$SONAR_HOST_URL
+            -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.qualitygate.wait=true
 
