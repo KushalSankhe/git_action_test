@@ -102,10 +102,14 @@ jobs:
           echo "SONAR_HOST_URL=$SONAR_HOST_URL"
           echo "SONAR_TOKEN length=${#SONAR_TOKEN}"
       
+      - name: Verify Sonar auth
+        run: |
+          curl -sf -u $SONAR_TOKEN: $SONAR_HOST_URL/api/authentication/validate
+      
       - name: Run SonarQube analysis
-        env:
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # env:
+        #   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        #   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           ./sonar-scanner/bin/sonar-scanner \
             -Dsonar.projectKey=my-python-project \
