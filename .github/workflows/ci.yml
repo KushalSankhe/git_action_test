@@ -115,6 +115,8 @@ jobs:
             -Dsonar.projectKey=my-python-project \
             -Dsonar.sources=. \
             -Dsonar.tests=. \
+            -Dsonar.test.inclusions=**/test_*.py \
+            -Dsonar.exclusions=**/test_*.py,**/requirements.txt,sonar-scanner/**,**/*.zip \
             -Dsonar.python.coverage.reportPaths=coverage/coverage.xml \
             -Dsonar.python.version=3.12 \
             -Dsonar.token=$SONAR_TOKEN \
