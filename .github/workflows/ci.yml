@@ -76,6 +76,9 @@ jobs:
     needs: 
       - Test_Python_Code
       - Show_output
+    env:
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout repo code
@@ -97,7 +100,7 @@ jobs:
       - name: Debug the sonar-scanner variable
         run: |
           echo "SONAR_HOST_URL=$SONAR_HOST_URL"
-          echo "SONAR_TOKEN=$SONAR_TOKEN"
+          echo "SONAR_TOKEN length=${#SONAR_TOKEN}"
       
       - name: Run SonarQube analysis
         env:
